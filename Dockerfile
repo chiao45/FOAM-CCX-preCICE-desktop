@@ -42,6 +42,7 @@ RUN git clone --depth 1 https://github.com/unifem/CalculiX_MT.git && \
 RUN cd $PRECICE_ADAPTERS_ROOT && \
     git clone --depth 1 https://github.com/precice/calculix-adapter.git && \
     cd $PRECICE_CALCULIX_ADAPTER_ROOT && \
+    sed -i '\-lpython2.7\d' ./Makefile && \
     make \
       CCX=$CALCULIX_REPO_ROOT/CalculiX/ccx_2.13/src \
       SPOOLES=$CALCULIX_REPO_ROOT/SPOOLES.2.2 \
