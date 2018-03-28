@@ -5,7 +5,7 @@ services: docker
 
 env:
   global:
-    - BASE=compdatasci/spyder-desktop:latest VERSION=dev
+    - BASE=chiao/foam-ccx-precice-desktop:base VERSION=dev
 
 
 before_script:
