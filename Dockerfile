@@ -28,15 +28,22 @@ RUN mkdir -p /usr/local/yaml-cpp && \
     ln -s -f /usr/lib/x86_64-linux-gnu /usr/local/yaml-cpp/build && \
     ln -s -f /usr/include/yaml-cpp /usr/local/yaml-cpp/include
 
-# substep 2, invoke the makefile
+# substep 2, build CalculiX
 RUN git clone --depth 1 https://github.com/unifem/CalculiX_MT.git && \
     cp -r CalculiX_MT $CALCULIX_REPO_ROOT && \
-    cd $PRECICE_ADAPTERS_ROOT && \
+    cd $CALCULIX_REPO_ROOT/ARPACK && \
+    make -j2 CALCULIX_HOME=$CALCULIX_REPO_ROOT && \
+    cd $CALCULIX_REPO_ROOT/SPOOLES.2.2 && \
+    make -j2 lib && \
+    cd $CALCULIX_REPO_ROOT/CalculiX/ccx_2.13/src && \
+    make -f makefile_MT
+
+# substep 3, build the adapter
+RUN cd $PRECICE_ADAPTERS_ROOT && \
     git clone --depth 1 https://github.com/precice/calculix-adapter.git && \
     cd $PRECICE_CALCULIX_ADAPTER_ROOT && \
     make \
       -j2 \
-      CALCULIX_HOME=$CALCULIX_REPO_ROOT \
       CCX=$CALCULIX_REPO_ROOT/CalculiX/ccx_2.13/src \
       SPOOLES=$CALCULIX_REPO_ROOT/SPOOLES.2.2 \
       ARPACK=$CALCULIX_REPO_ROOT/ARPACK \
