@@ -32,7 +32,7 @@ RUN mkdir -p /usr/local/yaml-cpp && \
 RUN git clone --depth 1 https://github.com/unifem/CalculiX_MT.git && \
     cp -r CalculiX_MT $CALCULIX_REPO_ROOT && \
     cd $CALCULIX_REPO_ROOT/ARPACK && \
-    make CALCULIX_HOME=$CALCULIX_REPO_ROOT && \
+    make CALCULIX_HOME=$CALCULIX_REPO_ROOT lib && \
     cd $CALCULIX_REPO_ROOT/SPOOLES.2.2 && \
     make lib && \
     cd $CALCULIX_REPO_ROOT/CalculiX/ccx_2.13/src && \
