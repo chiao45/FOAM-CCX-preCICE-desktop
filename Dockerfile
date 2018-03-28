@@ -26,8 +26,7 @@ RUN add-apt-repository http://dl.openfoam.org/ubuntu && \
       libboost-program-options-dev \
       libboost-test-dev \
       libyaml-cpp-dev && \
-    apt-get clean && \
-    mkdir -p $PRECICE_ADAPTERS_ROOT
+    apt-get clean
 
 # step 2 install preCICE
 # substep 1 fit Eigen into precice system
