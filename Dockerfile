@@ -42,7 +42,7 @@ RUN wget --quiet \
       https://github.com/precice/precice/archive/v$PRECICE_VERSION.tar.gz && \
     tar xf v$PRECICE_VERSION.tar.gz && \
     cp -r precice-$PRECICE_VERSION $DOCKER_HOME && \
-    cd &PRECICE_ROOT && \
+    cd $PRECICE_ROOT && \
     scons \
       compiler=mpicxx \
       build=release \
