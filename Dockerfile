@@ -36,7 +36,7 @@ RUN git clone --depth 1 https://github.com/unifem/CalculiX_MT.git && \
     cd $CALCULIX_REPO_ROOT/SPOOLES.2.2 && \
     make -j2 lib && \
     cd $CALCULIX_REPO_ROOT/CalculiX/ccx_2.13/src && \
-    make -f makefile_MT
+    make -f Makefile_MT
 
 # substep 3, build the adapter
 RUN cd $PRECICE_ADAPTERS_ROOT && \
