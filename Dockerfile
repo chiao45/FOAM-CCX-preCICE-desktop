@@ -12,6 +12,8 @@ ENV PRECICE_ADAPTERS_ROOT=$DOCKER_HOME/precice-adapters \
     PRECICE_CALCULIX_ADAPTER_ROOT=$PRECICE_ADAPTERS_ROOT/calculix-adapter \
     CALCULIX_REPO_ROOT=$DOCKER_HOME/CalculiX
 
+RUN mkdir -p $PRECICE_OPENFOAM_ADAPTER_ROOT
+
 # step 3 install openfoam adapter
 RUN cd $PRECICE_ADAPTERS_ROOT && \
     git clone --depth 1 https://github.com/precice/openfoam-adapter.git && \
