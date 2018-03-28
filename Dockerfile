@@ -24,7 +24,8 @@ RUN cd $PRECICE_ADAPTERS_ROOT && \
 
 # step 4 install calculix adapter
 # substep 1, make yaml-cpp fit into the adapter's makefile
-RUN ln -s -f /usr/lib/x86_64-linux-gnu /usr/local/yaml-cpp/build && \
+RUN mkdir -p /usr/local/yaml-cpp && \
+    ln -s -f /usr/lib/x86_64-linux-gnu /usr/local/yaml-cpp/build && \
     ln -s -f /usr/include/yaml-cpp /usr/local/yaml-cpp/include
 
 # substep 2, invoke the makefile
